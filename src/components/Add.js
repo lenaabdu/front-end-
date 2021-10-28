@@ -4,21 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Select from 'react-select';
+
 import 'react-country-dropdown/dist/index.css'
 
 class Add extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      disabled: false,
-      selectValue:""
+      disabled: false
+    
     ,
     }
   
 
   } 
-//  function that save  input values and update values 
+
   submitHandler(e) {
     e.preventDefault()
     this.setState({ disabled: true })
@@ -43,12 +43,7 @@ class Add extends React.Component {
         alert("an error occured, please try again");
         this.setState({ disabled: false })
       })
-  }  handleDropdownChange(e) {
-    this.setState({ selectValue: e.target.currentAd?.location });
-    
-    window.location.reload();
-   
-  }
+  } 
 
 
   render() {

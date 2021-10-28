@@ -20,7 +20,7 @@ class Login extends React.Component {
       disabled: false
     }
   }
-//  function that checks  the email and password 
+
   submitHandler(e) {
     e.preventDefault()
     this.setState({ disabled: true })
@@ -48,7 +48,7 @@ class Login extends React.Component {
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
       <Link className="nav-link" to="/register" >Register</Link>
-      <Link className="nav-link" to="/" >Login</Link>
+      <Link className="nav-link" to="/login" >Login</Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
@@ -59,7 +59,7 @@ class Login extends React.Component {
           <Adduser/>
       </Route>
       <Container>
-      <Route path="/">
+      <Route path="/login">
       <h3 className=" home">Login</h3> <br/>
   <Form onSubmit={(e) => this.submitHandler(e)} >
   <Form.Group className="mb-3" controlId="formBasicEmail"> 

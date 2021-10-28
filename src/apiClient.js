@@ -1,7 +1,7 @@
 import axios from 'axios'
-//const url = 'http://localhost:7000/'
+//const url = 'http://localhost:7008/'
 
-const url = 'https://git.heroku.com/back-end-login.git/'
+const url = 'https://back-end-app-1.herokuapp.com/'
 
 export class ApiClient {
     constructor(tokenProvider, logoutHandler) {

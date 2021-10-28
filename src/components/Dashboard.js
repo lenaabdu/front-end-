@@ -27,26 +27,28 @@ class Dashboard extends React.Component {
     this.state = {
       ads: [],
       seafilter:"",
-      currentAd: undefined
+      
+      currentAd: undefined,
+      token: window.localStorage.getItem("token")
     };
     this.client = new ApiClient(() => this.state.token, () => this.logout())
   }
-// filter  function 
+
   handleChange =(e) => {
     this.setState({
        seafilter: e.target.value });
   };
-  // Add new data fuction
+
   refreshList(){
     this.props.client.getAds()
     .then((response) => this.setState({ ads: response.data }))
   }
-// remove button function 
+
   removeAdvert(id){
     this.props.client.removeAd(id)
     .then(this.refreshList())
   }
-// update button functin function
+
   updateAdvert(ad){
     this.setState({currentAd: ad})
     document.getElementById('101').textContent = 'Update';
@@ -56,7 +58,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     this.refreshList()
   }
-  // log out function 
+ 
   logout() {
     window.localStorage.removeItem("token")
     this.setState({ token: undefined });
@@ -64,7 +66,7 @@ class Dashboard extends React.Component {
 }
 
   render() {
-    /* A variable that specifies number of page in the table    */ 
+   
     const pagination = paginationFactory({
       page: 5
     });
@@ -124,9 +126,10 @@ class Dashboard extends React.Component {
     }
   
   ];
-/*   variables for the filter searcher function  */ 
+
+
     const  { seafilter, ads } = this.state;
-    const lowercasedFilter = seafilter.toLowerCase();
+  const lowercasedFilter = seafilter.toLowerCase();
     const  filteredData = ads.filter(current=> {
       return Object.keys(current).some(key =>
         typeof current[key] === "string" && current[key].toLowerCase().includes(lowercasedFilter)
